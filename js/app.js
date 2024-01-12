@@ -13,28 +13,24 @@ const changeClass = (filter) => {
   });
 };
 
-const searchHandler = (event) => {
+const searchNameHandler = (event) => {
   const searchValue = event.target.value.toLowerCase().trim();
   products.forEach((product) => {
     const productTitle = product.children[1].innerText.toLowerCase();
-    if (productTitle.includes(searchValue)) {
-      product.style.display = "block";
-    } else {
-      product.style.display = "none";
-    }
+    productTitle.includes(searchValue) ? (product.style.display = "block") : (product.style.display = "none");
   });
 };
 
-const searchPriceHandler = (event) => {
+const searchPriceHandler = () => {
   const searchValue = +searchButton.previousElementSibling.value;
   products.forEach((product) => {
-    const productPrice = product.children[2].innerText;
-    const price = +productPrice.split("$")[1];
+    const productPrice = product.children[2].innerText.split(" ")[1];
     if (!searchValue) {
       product.style.display = "block";
     } else {
-      searchValue === price ? (product.style.display = "block") : (product.style.display = "none");
+      searchValue === +productPrice ? (product.style.display = "block") : (product.style.display = "none");
     }
+    // product.style.display = !searchValue || searchValue === +productPrice ? "block" : "none";
   });
 };
 
@@ -49,6 +45,7 @@ const filterHandler = (event) => {
     } else {
       filter === productCategory ? (product.style.display = "block") : (product.style.display = "none");
     }
+    // product.style.display = filter === "all" || filter === productCategory ? "block" : "none";
   });
 };
 
@@ -56,8 +53,8 @@ const start = () => {
   buttons.forEach((button) => {
     button.addEventListener("click", filterHandler);
   });
-  searchInput.addEventListener("keyup", searchHandler);
+  searchInput.addEventListener("keyup", searchNameHandler);
   searchButton.addEventListener("click", searchPriceHandler);
 };
 
-window.addEventListener("load",start)
+window.addEventListener("load", start);

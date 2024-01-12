@@ -44,22 +44,16 @@ button {
 }
 button:hover {
   background-color: #fff;
-  border: #FF9843 2px solid; 
+  border: #ff9843 2px solid;
   color: #3468c0;
 }
 #products {
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* align-items: center; */
   gap: 1rem;
-  /* margin-top: 4rem; */
 }
 .product-item {
   background-color: #fff;
-  /* max-width: 100%; */
   margin: 30px 0;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 20px;
@@ -68,7 +62,6 @@ button:hover {
 }
 .product-item img {
   max-width: 100%;
-  /* height: auto; */
   border-radius: 15px;
   margin-bottom: 20px;
 }
@@ -86,9 +79,8 @@ button:hover {
 }
 .selected {
   background-color: #fff;
-  border: #FF9843 2px solid; 
+  border: #ff9843 2px solid;
   color: #3468c0;
-
 }
 @media (max-width: 1000px) {
   #search {
