@@ -43,7 +43,9 @@ button {
   margin-right: 10px;
 }
 button:hover {
-  background-color: #3468c0;
+  background-color: #fff;
+  border: #FF9843 2px solid; 
+  color: #3468c0;
 }
 #products {
   /* display: flex;
@@ -81,6 +83,12 @@ button:hover {
   color: #fff;
   padding: 5px 10px;
   border-radius: 10px;
+}
+.selected {
+  background-color: #fff;
+  border: #FF9843 2px solid; 
+  color: #3468c0;
+
 }
 @media (max-width: 1000px) {
   #search {
