@@ -1,6 +1,7 @@
 const searchInput = document.getElementById("search-input");
 const products = document.querySelectorAll(".product-item");
 const buttons = document.querySelectorAll(".filter");
+const searchButton = document.querySelector("#search-price button");
 
 const changeClass = (filter) => {
   buttons.forEach((button) => {
@@ -24,6 +25,19 @@ const searchHandler = (event) => {
   });
 };
 
+const searchPriceHandler = (event) => {
+  const searchValue = +searchButton.previousElementSibling.value;
+  products.forEach((product) => {
+    const productPrice = product.children[2].innerText;
+    const price = +productPrice.split("$")[1];
+    if (!searchValue) {
+      product.style.display = "block";
+    } else {
+      searchValue === price ? (product.style.display = "block") : (product.style.display = "none");
+    }
+  });
+};
+
 const filterHandler = (event) => {
   const filter = event.target.dataset.filter;
   changeClass(filter);
@@ -38,8 +52,12 @@ const filterHandler = (event) => {
   });
 };
 
-const change = searchInput.addEventListener("keyup", searchHandler);
+const start = () => {
+  buttons.forEach((button) => {
+    button.addEventListener("click", filterHandler);
+  });
+  searchInput.addEventListener("keyup", searchHandler);
+  searchButton.addEventListener("click", searchPriceHandler);
+};
 
-buttons.forEach((button) => {
-  button.addEventListener("click", filterHandler);
-});
+window.addEventListener("load",start)
